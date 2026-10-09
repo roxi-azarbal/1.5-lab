@@ -34,6 +34,7 @@ public class LoopPuzzles {
 
     // Read REQ 04
     public int reverseDigits(int n) {
+        boolean negative = n < 0;
         if (n < 0) {
             n *= -1;
         }
@@ -44,6 +45,11 @@ public class LoopPuzzles {
             reversed = reversed * 10 + n % 10;
             n /= 10;
         }
+
+        if (negative) {
+            reversed *= -1;
+        }
+
         return reversed;
     }
 
@@ -53,7 +59,7 @@ public class LoopPuzzles {
             return false;
         }
 
-        if (n % 3 == 0) {
+        while (n % 3 == 0) {
             n /= 3;
         }
         return n == 1;
