@@ -6,9 +6,9 @@ public class LoopPuzzles {
             return -1;
         }
         int steps = 0;
-        while (start != -1) {
+        while (start != 1) {
             if (start % 2 == 0) {
-                (start) /= 2;
+                start /= 2;
             } else if (start % 2 != 0) {
                 start = 3 * start + 1;
             }
@@ -37,9 +37,11 @@ public class LoopPuzzles {
         if (n < 0) {
             n *= -1;
         }
+
         int reversed = 0;
+
         while (n > 0) {
-            reversed = reversed + 10 + n % 10;
+            reversed = reversed * 10 + n % 10;
             n /= 10;
         }
         return reversed;
@@ -51,12 +53,10 @@ public class LoopPuzzles {
             return false;
         }
 
-        if (n % 3 != 0) {
-            return false;
-        } else if (n / 3 == 0) {
-            return true;
+        if (n % 3 == 0) {
+            n /= 3;
         }
-        return false;
+        return n == 1;
     }
 
     // Read REQ 06
@@ -124,7 +124,7 @@ public class LoopPuzzles {
         int bestStart = 1;
         int current = 1;
 
-        while (current <= 1) {
+        while (current <= limit) {
             int steps = stepsToOne(current);
 
             if (steps > mostSteps) {
